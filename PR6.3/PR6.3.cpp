@@ -14,7 +14,26 @@ void Input(int* a, const int n)
 	cout << endl;
 }
 
+template<typename T>
+void Input(T* a, const int n)
+{
+	for (int i = 0; i < n; i++)
+	{
+		cout << "a[" << i << "] = ";
+		cin >> a[i];
+	}
+	cout << endl;
+}
+
 void Print(int* a, const int n)
+{
+	for (int i = 0; i < n; i++)
+		cout << setw(4) << a[i];
+	cout << endl;
+}
+
+template<typename T>
+void Print(T* a, const int n)
 {
 	for (int i = 0; i < n; i++)
 		cout << setw(4) << a[i];
@@ -29,6 +48,15 @@ int Sum(int* a, const int n)
 	return S;
 }
 
+template<typename T>
+T Sum(T* a, const int n)
+{
+	T S = 0;
+	for (int i = 0; i < n; i++)
+		S += a[i] * a[i];
+	return S;
+}
+
 int main()
 {
 	int n;
@@ -36,10 +64,10 @@ int main()
 	cin >> n;
 	int* a = new int [n];
 
-	Input(a, n);
-	Print(a, n);
+	Input<int>(a, n);
+	Print<int>(a, n);
 
-	cout << "S = " << Sum(a, n) << endl;
+	cout << "S = " << Sum<int>(a, n) << endl;
 
 	return 0;
 }
